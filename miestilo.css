@@ -1,0 +1,157 @@
+h1 {
+    text-align: center;
+    
+}
+
+p {
+    font-family: 'Tinos', serif;
+    font-size: 1.3vw;
+    text-align: justify;
+}
+
+.navbar {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.3vw;
+    font-weight: bold;
+}
+
+.bottom-aligned {
+    display: flex;
+    align-items: flex-end;
+}
+
+.fab {
+    color: black;
+}
+
+.fab:hover {
+    color: blue;
+}
+
+#historia {
+    background-color: #f2d9e6;
+    padding: 1vw;
+
+}
+
+#gastronomia {
+    background-color: #e6ffe6;
+    padding: 1vw;
+}
+
+#personajes {
+    background-color: #e6ffe6;
+    padding: 1vw;
+}
+
+#lugaresinteres {
+    background-color: #f2d9e6;
+    padding: 1vw;
+}
+
+#contacto {
+    background-color: #f2d9e6;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+footer {
+    text-align: center;
+    background-color: #e6e6e6;
+    color: black;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+#cuerpo {
+    background-color:#f2f2f2;
+}
+
+#v-pills-profile-tab {
+    background-color: beige;
+    margin-bottom: 1vw;
+}
+
+#v-pills-profile-tab:hover {
+    background-color: lightpink;
+    margin-bottom: 1vw;
+}
+
+#v-pills-messages-tab {
+    background-color: beige;
+    margin-bottom: 1vw;
+}
+
+#v-pills-messages-tab:hover {
+    background-color: lightpink;
+    margin-bottom: 1vw;
+}
+
+#v-pills-settings-tab {
+    background-color: beige;
+    margin-bottom: 1vw;
+}
+
+#v-pills-settings-tab:hover {
+    background-color: lightpink;
+    margin-bottom: 1vw;
+}
+
+#v-pills-settings1-tab{
+    background-color: beige;
+}
+
+#v-pills-settings1-tab:hover {
+    background-color: lightpink;
+    margin-bottom: 1vw;
+}
+
+#alquilerbicis {
+    background-color: #e9c7d9;
+}
+
+#boton {
+    background-color: violet;
+    color: black;
+    border: 1px solid violet;
+}
+
+#cardValera {
+    background-color: #e9c7d9;
+}
+
+section p {
+    text-indent: 1.5vw;
+}
+
+.card-body {
+    background-color: #d7f5d7;
+}
+
+#receta1 {
+    background-color: #b8ddb8;
+    color: black;
+    border: 1px solid #b8ddb8;
+}
+
+#receta2 {
+    background-color: #b8ddb8;
+    color: black;
+    border: 1px solid #b8ddb8;
+}
+
+#receta3 {
+    background-color: #b8ddb8;
+    color: black;
+    border: 1px solid #b8ddb8;
+}
+
+@media only screen and (max-width:575px) {
+    .texto {
+        font-size: 2.5vw;
+    }
+
+    .navbar-nav {
+        font-size: 2.5vw;
+    }
+}
