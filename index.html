@@ -6,21 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="miestilo.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+    </script>
     <title>Cabra la cordobesa</title>
     <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+
+    <!--COMIENZO DEL JS-->
+    <script>
+        function validar() {
+            var nombre = document.getElementById("inputNombre3").value;
+            var apellidos = document.getElementById("inputApellidos3").value;
+            var email = document.getElementById("inputEmail3").value;
+            var pass = document.getElementById("inputPassword3").value;
+            var select1 = document.getElementById("elige").selectedIndex;
+            var fecha = document.getElementById("fecha").value;
+            var provincia = document.getElementById("provincia").selectedIndex;
+
+
+            var valido = true;
+
+            if ((nombre.length == 0) || parseInt(nombre)) {
+                document.getElementById("nombreSmall").style.visibility = "visible";
+                valido = false;
+            }
+
+            if ((apellidos == 0) || parseInt(apellidos)) {
+                document.getElementById("apellidosSmall").style.visibility = "visible";
+                valido = false;
+            }
+
+            if (!(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email))) {
+                document.getElementById("emailSmall").style.visibility = "visible";
+                valido = false;
+            }
+
+            if ((pass.length < 4) || (pass.length > 10) ||
+                !/[a-zñ]/.test(pass) || !/[A-ZÑ]/.test(pass) ||
+                !/[0-9]/.test(pass) ||
+                !/[.,:;-_?¿+@]/.test(pass)) {
+                document.getElementById("passSmall").style.visibility = "visible";
+                valido = false;
+            }
+
+            if (select1 == "" || select1 == null) {
+                document.getElementById("selectSmall").style.visibility = "visible";
+                valido = false;
+            }
+
+            if (fecha == "") {
+                document.getElementById("fechaSmall").style.visibility = "visible"
+                valido = false;
+            }
+
+            if (provincia == "" || provincia == null) {
+                document.getElementById("provinciaSmall").style.visibility = "visible";
+                valido = false;
+            }
+
+            if (!aceptar.checked) {
+                document.getElementById("aceptarHelp").style.visibility = "visible";
+                valido = false;
+            }
+            return valido;
+        }
+
+        function quitarError(mensaje) {
+            document.getElementById(mensaje).style.visibility = "hidden";
+        }
+    </script>
 </head>
 
 <body id="cuerpo">
@@ -34,12 +101,13 @@
             <a type="text" data-toggle="modal" data-target="#exampleModalLong">
                 <em>aquí.</em>
             </a>
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-                aria-hidden="true">
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle" style="font-family: 'Cinzel', serif; text-align: center;">POLÍTICA
+                            <h5 class="modal-title" id="exampleModalLongTitle"
+                                style="font-family: 'Cinzel', serif; text-align: center;">POLÍTICA
                                 DE PRIVACIDAD DE COOKIES</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -181,7 +249,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar (y aceptar)</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar (y
+                                aceptar)</button>
                         </div>
                     </div>
                 </div>
@@ -239,7 +308,8 @@
                     <div class="carousel-item active">
                         <img src="img/arcos.jpg" class="d-block w-100" alt="Arcos de Cabra">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">Arcos
+                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">
+                                Arcos
                                 de Cabra</h5>
                             <p class="text-center" style="text-shadow: 2px 2px #000000;">Monumento de la ciudad.
                                 Antiguos arcos de entrada a la antigua calle
@@ -249,7 +319,8 @@
                     <div class="carousel-item">
                         <img src="img/ayuntamiento.jpg" class="d-block w-100" alt="Ayntamiento">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">Ayuntamiento</h5>
+                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">
+                                Ayuntamiento</h5>
                             <p class="text-center" style="text-shadow: 2px 2px #000000;">El ayuntamiento se encuentra
                                 en el centro de la ciudad alrededor de
                                 distintos comercios.
@@ -259,7 +330,8 @@
                     <div class="carousel-item">
                         <img src="img/barco.jpg" class="d-block w-100" alt="Barco">
                         <div class="carousel-caption d-none d-md-block text-light">
-                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">Barco
+                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">
+                                Barco
                                 de la batalla de Trafalgar</h5>
                             <p class="text-center" style="text-shadow: 2px 2px #000000;">Homenaje a Dionisio Alcalá
                                 Galiano. Persona célebre nacido en Cabra
@@ -270,7 +342,8 @@
                     <div class="carousel-item">
                         <img src="img/cerro.jpg" class="d-block w-100" alt="Barrio del Cerro">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">Plaza
+                            <h5 style="font-family: 'Cinzel', serif; text-align: center; text-shadow: 2px 2px #000000;">
+                                Plaza
                                 Santa María la Mayor - El cerro</h5>
                             <p class="text-center" style="text-shadow: 2px 2px #000000;">"El Cerro" es uno de los 5
                                 barrios con los que cuenta Cabra. En la
@@ -345,7 +418,8 @@
                     <div class="col-12 col-md-6">
                         <div class="embed-responsive  embed-responsive-16by9">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/h8V02lspn88"
-                                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                         </div>
                     </div>
@@ -353,7 +427,8 @@
                     <div class="col-12 col-md-6">
                         <div class="embed-responsive  embed-responsive-16by9">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/fyG19_TdZhw"
-                                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                         </div>
                     </div>
@@ -373,7 +448,8 @@
                 <div class="card">
                     <img src="img/valera.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title" style="font-family: 'Cinzel', serif; text-align: center;">Juan Valera</h5>
+                        <h5 class="card-title" style="font-family: 'Cinzel', serif; text-align: center;">Juan Valera
+                        </h5>
                         <p class="card-text">
                             <p class="texto">Nació en Cabra en 1824. Autor de obras literarias como Juanita la
                                 Larga o Pepita
@@ -421,7 +497,8 @@
                 <div class="card">
                     <img src="img/martinbelda.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title" style="font-family: 'Cinzel', serif; text-align: center;">Martín Belda</h5>
+                        <h5 class="card-title" style="font-family: 'Cinzel', serif; text-align: center;">Martín Belda
+                        </h5>
                         <p class="card-text">
                             <p class="texto">I Marqués de Cabra. Político español, destacando entre sus
                                 cargos el de presidente del Congreso de los Diputados, ministro de la Marina y
@@ -454,20 +531,25 @@
             <div class="row">
                 <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link text-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-via_verde"
-                            role="tab" aria-controls="v-pills-profile" aria-selected="true">Vía Verde</a>
-                        <a class="nav-link text-dark" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-fuente_rio"
-                            role="tab" aria-controls="v-pills-messages" aria-selected="false">Fuente del Río</a>
-                        <a class="nav-link text-dark" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-sierra"
-                            role="tab" aria-controls="v-pills-settings" aria-selected="false">Sierra de Cabra</a>
-                        <a class="nav-link text-dark" id="v-pills-settings1-tab" data-toggle="pill" href="#v-pills-castillo"
-                            role="tab" aria-controls="v-pills-settings" aria-selected="false">Castillo de los
+                        <a class="nav-link text-dark" id="v-pills-profile-tab" data-toggle="pill"
+                            href="#v-pills-via_verde" role="tab" aria-controls="v-pills-profile"
+                            aria-selected="true">Vía Verde</a>
+                        <a class="nav-link text-dark" id="v-pills-messages-tab" data-toggle="pill"
+                            href="#v-pills-fuente_rio" role="tab" aria-controls="v-pills-messages"
+                            aria-selected="false">Fuente del Río</a>
+                        <a class="nav-link text-dark" id="v-pills-settings-tab" data-toggle="pill"
+                            href="#v-pills-sierra" role="tab" aria-controls="v-pills-settings"
+                            aria-selected="false">Sierra de Cabra</a>
+                        <a class="nav-link text-dark" id="v-pills-settings1-tab" data-toggle="pill"
+                            href="#v-pills-castillo" role="tab" aria-controls="v-pills-settings"
+                            aria-selected="false">Castillo de los
                             Condes de Cabra</a>
                     </div>
                 </div>
                 <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-via_verde" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <div class="tab-pane fade show active" id="v-pills-via_verde" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab">
                             <!--CAROUSEL IMAGENES VIA VERDE-->
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -516,8 +598,8 @@
                                 <p class="texto">Pulse el botón para alquilar una y recorrer los fantásticos paisajes
                                     de la
                                     Subbética.</p>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formulario"
-                                    id="boton">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#formulario" id="boton">
                                     Alquilar bicicleta
                                 </button>
                                 <!--modal-->
@@ -525,93 +607,293 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" style="font-family: 'Cinzel', serif; text-align: center;">Formulario
+                                                <h5 class="modal-title"
+                                                    style="font-family: 'Cinzel', serif; text-align: center;">Formulario
                                                     de alquiler <i class="fas fa-bicycle"></i></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <!--cuestionario-->
-                                                <form action=mailto:lorenamoyanomontes1991@gmail.com>
+                                                <form action="mailto:lorenamoyanomontes1991@gmail.com"
+                                                    onsubmit="return validar();">
                                                     <div class="form-group row">
-                                                        <label for="inputNombre3" class="col-sm-2 col-form-label">Nombre</label>
+                                                        <label for="inputNombre3"
+                                                            class="col-sm-2 col-form-label">Nombre</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="inputNombre3"
-                                                                placeholder="Nombre">
+                                                                placeholder="Nombre"
+                                                                onchange="quitarError('nombreSmall')">
+                                                            <small id="nombreSmall"
+                                                                class="form-text text-danger">Introduzca su
+                                                                nombre</small>
                                                         </div>
+
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="inputApellidos3" class="col-sm-2 col-form-label">Apellidos</label>
+                                                        <label for="inputApellidos3"
+                                                            class="col-sm-2 col-form-label">Apellidos</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="inputApellidos3"
-                                                                placeholder="Apellidos">
+                                                                placeholder="Apellidos"
+                                                                onchange="quitarError('apellidosSmall')">
+                                                            <small id="apellidosSmall"
+                                                                class="form-text text-danger">Introduzca sus
+                                                                apellidos</small>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                                                        <label for="inputEmail3"
+                                                            class="col-sm-2 col-form-label">Email</label>
                                                         <div class="col-sm-10">
                                                             <input type="email" class="form-control" id="inputEmail3"
-                                                                placeholder="Email">
+                                                                placeholder="Email"
+                                                                onchange="quitarError('emailSmall')">
+                                                            <small id="emailSmall"
+                                                                class="form-text text-danger">Introduzca su
+                                                                email</small>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+                                                        <label for="inputPassword3"
+                                                            class="col-sm-2 col-form-label">Contraseña</label>
                                                         <div class="col-sm-10">
-                                                            <input type="password" class="form-control" id="inputPassword3"
-                                                                placeholder="Contraseña">
+                                                            <input type="password" class="form-control"
+                                                                id="inputPassword3" placeholder="Contraseña"
+                                                                onchange="quitarError('passSmall')">
+                                                            <small id="passSmall"
+                                                                class="form-text text-danger">Introduzca una
+                                                                contraseña</small>
                                                         </div>
                                                     </div>
-                                                    <fieldset class="form-group">
-                                                        <div class="row">
-                                                            <legend class="col-form-label col-sm-2 pt-0">Número de
-                                                                bicicletas</legend>
-                                                            <div class="col-sm-10">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                                                        id="gridRadios1" value="option1" checked>
-                                                                    <label class="form-check-label" for="gridRadios1">
-                                                                        1
-                                                                    </label>
+                                                    <!--     -->
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-2">Bicicletas</div>
+                                                        <div class="form-group col-sm-10">
+                                                            <select id="elige" class="form-control"
+                                                                onchange="quitarError('selectSmall')">
+                                                                <option value="">Elija una opción</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="+3">Más de 3</option>
+                                                            </select>
+                                                            <small id="selectSmall"
+                                                                class="form-text text-danger">Seleccione una
+                                                                opcion</small>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="fecha" class="col-sm-2 col-form-label">Fecha
+                                                            alquiler</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="fecha"
+                                                                placeholder="Fecha de alquiler"
+                                                                onchange="quitarError('fechaSmall')">
+                                                            <small id="fechaSmall"
+                                                                class="form-text text-danger">Introduzca la
+                                                                fecha</small>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-2">Provincia</div>
+                                                        <div class="form-group col-sm-10">
+                                                            <select id="provincia" class="form-control"
+                                                                onchange="quitarError('provinciaSmall')">
+                                                                <option value="">Elija una opción</option>
+                                                                <option value="1">Córdoba</option>
+                                                                <option value="2">Sevilla</option>
+                                                                <option value="3">Huelva</option>
+                                                                <option value="4">Cádiz</option>
+                                                                <option value="5">Málaga</option>
+                                                                <option value="6">Granada</option>
+                                                                <option value="7">Almería</option>
+                                                                <option value="8">Jaén</option>
+                                                            </select>
+                                                            <small id="provinciaSmall"
+                                                                class="form-text text-danger">Seleccione una
+                                                                opcion</small>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--MODAL-->
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input mt-5 pt-5"
+                                                            id="aceptar" onchange="quitarError('aceptarHelp')">
+                                                        <label class="form-check-label  pt-5 ml-2" for="aceptar"><a
+                                                                href="" data-toggle="modal"
+                                                                data-target="#confidencialidad">Acepto la política de
+                                                                confidencialidad</a></label>
+                                                        <small id="aceptarHelp" class="form-text text-danger">Es
+                                                            obligatorio marcar esta casilla</small>
+                                                    </div>
+                                                    <!-- Modal de Bootstrap -->
+                                                    <div class="modal fade" id="confidencialidad" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalScrollableTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-scrollable"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="exampleModalScrollableTitle">Política de
+                                                                        confidencialidad</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
                                                                 </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                                                        id="gridRadios2" value="option2">
-                                                                    <label class="form-check-label" for="gridRadios2">
-                                                                        2
-                                                                    </label>
+                                                                <div class="modal-body">
+                                                                    <!-- aquí va el texto de la política de confidencialidad -->
+                                                                    1. Introducción<br>
+
+                                                                    Las presentes condiciones generales de uso de la
+                                                                    página web, regulan los términos y condiciones de
+                                                                    acceso y uso de MI PÁGINA, propiedad de
+                                                                    (indicar el nombre de la empresa o profesional
+                                                                    propietario de el portal), con domicilio en
+                                                                    (indicar) y con Código de Identificación Fiscal
+                                                                    número (indicar), en adelante, «la Empresa», que el
+                                                                    usuario del Portal deberá de leer y aceptar para
+                                                                    usar todos los servicios e información que se
+                                                                    facilitan desde el portal. El mero acceso y/o
+                                                                    utilización del portal, de todos o parte de sus
+                                                                    contenidos y/o servicios significa la plena
+                                                                    aceptación de las presentes condiciones generales de
+                                                                    uso.<br>
+
+                                                                    2. Condiciones de uso<br>
+
+                                                                    Las presentes condiciones generales de uso del
+                                                                    portal regulan el acceso y la utilización del
+                                                                    portal, incluyendo los contenidos y los servicios
+                                                                    puestos a disposición de los usuarios en y/o a
+                                                                    través del portal, bien por el portal, bien por sus
+                                                                    usuarios, bien por terceros. No obstante, el acceso
+                                                                    y la utilización de ciertos contenidos y/o servicios
+                                                                    puede encontrarse sometido a determinadas
+                                                                    condiciones específicas.<br>
+
+                                                                    3. Modificaciones<br>
+
+                                                                    La empresa se reserva la facultad de modificar en
+                                                                    cualquier momento las condiciones generales de uso
+                                                                    del portal. En todo caso, se recomienda que consulte
+                                                                    periódicamente los presentes términos de uso del
+                                                                    portal, ya que pueden ser modificados.<br>
+
+                                                                    4. Obligaciones del Usuario<br>
+
+                                                                    El usuario deberá respetar en todo momento los
+                                                                    términos y condiciones establecidos en las presentes
+                                                                    condiciones generales de uso del portal. De forma
+                                                                    expresa el usuario manifiesta que utilizará el
+                                                                    portal de forma diligente y asumiendo cualquier
+                                                                    responsabilidad que pudiera derivarse del
+                                                                    incumplimiento de las normas.<br>
+
+                                                                    Así mismo, el usuario no podrá utilizar el portal
+                                                                    para transmitir, almacenar, divulgar promover o
+                                                                    distribuir datos o contenidos que sean portadores de
+                                                                    virus o cualquier otro código informático, archivos
+                                                                    o programas diseñados para interrumpir, destruir o
+                                                                    perjudicar el funcionamiento de cualquier programa o
+                                                                    equipo informático o de telecomunicaciones.<br>
+
+                                                                    5. Responsabilidad del portal<br>
+
+                                                                    El usuario conoce y acepta que el portal no otorga
+                                                                    ninguna garantía de cualquier naturaleza, ya sea
+                                                                    expresa o implícita, sobre los datos, contenidos,
+                                                                    información y servicios que se incorporan y ofrecen
+                                                                    desde el Portal.<br>
+
+                                                                    Exceptuando los casos que la Ley imponga
+                                                                    expresamente lo contrario, y exclusivamente con la
+                                                                    medida y extensión en que lo imponga, el Portal no
+                                                                    garantiza ni asume responsabilidad alguna respecto a
+                                                                    los posibles daños y perjuicios causados por el uso
+                                                                    y utilización de la información, datos y servicios
+                                                                    del Portal.<br>
+
+                                                                    En todo caso, el Portal excluye cualquier
+                                                                    responsabilidad por los daños y perjuicios que
+                                                                    puedan deberse a la información y/o servicios
+                                                                    prestados o suministrados por terceros diferentes de
+                                                                    la Empresa. Toda responsabilidad será del tercero ya
+                                                                    sea proveedor o colaborador.<br>
+
+                                                                    6. Propiedad intelectual e industrial<br>
+
+                                                                    Todos los contenidos, marcas, logos, dibujos,
+                                                                    documentación, programas informáticos o cualquier
+                                                                    otro elemento susceptible de protección por la
+                                                                    legislación de propiedad intelectual o industrial,
+                                                                    que sean accesibles en el portal corresponden
+                                                                    exclusivamente a la empresa o a sus legítimos
+                                                                    titulares y quedan expresamente reservados todos los
+                                                                    derechos sobre los mismos. Queda expresamente
+                                                                    prohibida la creación de enlaces de hipertexto
+                                                                    (links) a cualquier elemento integrante de las
+                                                                    páginas web del Portal sin la autorización de la
+                                                                    empresa, siempre que no sean a una página web del
+                                                                    Portal que no requiera identificación o
+                                                                    autenticación para su acceso, o el mismo esté
+                                                                    restringido.<br>
+
+                                                                    En cualquier caso, el portal se reserva todos los
+                                                                    derechos sobre los contenidos, información datos y
+                                                                    servicios que ostente sobre los mismos. El portal no
+                                                                    concede ninguna licencia o autorización de uso al
+                                                                    usuario sobre sus contenidos, datos o servicios,
+                                                                    distinta de la que expresamente se detalle en las
+                                                                    presentes condiciones generales de uso del
+                                                                    portal.<br>
+
+                                                                    7. Legislación aplicable, jurisdicción competente y
+                                                                    notificaciones<br>
+
+                                                                    Las presentes condiciones se rigen y se interpretan
+                                                                    de acuerdo con las Leyes de España. Para cualquier
+                                                                    reclamación serán competentes los juzgados y
+                                                                    tribunales de (indicar la ciudad). Todas las
+                                                                    notificaciones, requerimientos, peticiones y otras
+                                                                    comunicaciones que el Usuario desee efectuar a la
+                                                                    Empresa titular del Portal deberán realizarse por
+                                                                    escrito y se entenderá que han sido correctamente
+                                                                    realizadas cuando hayan sido recibidas en la
+                                                                    siguiente dirección (indicar dirección de correo en
+                                                                    la que se desean recibir las notificaciones).
                                                                 </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="gridRadios"
-                                                                        id="gridRadios3" value="option3">
-                                                                    <label class="form-check-label" for="gridRadios3">
-                                                                        3 o más.
-                                                                    </label>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save
+                                                                        changes</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </fieldset>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-2">Aceptar los términos de uso</div>
-                                                        <div class="col-sm-10">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                                                <label class="form-check-label" for="gridCheck1">
-                                                                    Acepto
-                                                                </label>
-                                                            </div>
-                                                        </div>
                                                     </div>
+
+                                                    <!--FIN MODAL-->
+
+
                                                     <div class="form-group row">
                                                         <div class="col-sm-10">
-                                                            <button type="submit" class="btn btn-primary">Enviar</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <!--fin cuestionario-->
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Cancelar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -624,7 +906,8 @@
                         <!--FIN VIA VERDE-->
 
                         <!--FUENTE DEL RIO-->
-                        <div class="tab-pane fade" id="v-pills-fuente_rio" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="tab-pane fade" id="v-pills-fuente_rio" role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab">
                             <!--CAROUSEL IMAGENES FUENTE DEL RIO-->
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -690,7 +973,8 @@
                         <!--FIN FUENTE DEL RIO-->
 
                         <!--INICIO SIERRA DE CABRA-->
-                        <div class="tab-pane fade" id="v-pills-sierra" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <div class="tab-pane fade" id="v-pills-sierra" role="tabpanel"
+                            aria-labelledby="v-pills-settings-tab">
                             <!--CAROUSEL SIERRA DE CABRA-->
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -725,7 +1009,8 @@
                         <!--FIN SIERRA DE CABRA-->
 
                         <!--CASTILLO DE LOS CONDES DE CABRA-->
-                        <div class="tab-pane fade" id="v-pills-castillo" role="tabpanel" aria-labelledby="v-pills-settings1-tab">
+                        <div class="tab-pane fade" id="v-pills-castillo" role="tabpanel"
+                            aria-labelledby="v-pills-settings1-tab">
                             <!--CAROUSEL IMAGENES-->
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -787,7 +1072,8 @@
                             <p class="texto">Dulce típico de la Cuaresma y Semana Santa egabrense.</p>
                             <p>
                                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample1" role="button"
-                                    aria-expanded="false" aria-controls="collapseExample" style="padding-left: 0" id="receta1">
+                                    aria-expanded="false" aria-controls="collapseExample" style="padding-left: 0"
+                                    id="receta1">
                                     <i class="fas fa-book-open" style="padding-left: 0;"></i> RECETA
                                 </a>
                             </p>
@@ -813,14 +1099,16 @@
                                             y
                                             la ralladura de limón. Volvemos a mezclar todo bien.</li>
                                         <li>A continuación añadimos poco a poco la harina. Cuando veamos que la masa se
-                                            despega de la superficie y de las manos será el momento en que esté lista.</li>
+                                            despega de la superficie y de las manos será el momento en que esté lista.
+                                        </li>
                                         <li>Una vez lista, cogemos la masa y hacemos algunos churros no muy largos. Una
                                             vez
                                             hecho esto, pasamos a engrasar las cañas con aceite para evitar que la masa
                                             se
                                             pegue. Enrollamos la masa en la caña, apretamos bien y la echamos a la
                                             sartén
-                                            que previamente habremos puesto a calentar con bastante aceite de girasol.</li>
+                                            que previamente habremos puesto a calentar con bastante aceite de girasol.
+                                        </li>
                                         <li>Los dejamos en la sartén hasta que estén bien tostados. Una vez estén
                                             listos,
                                             los sacamos y los ponemos sobre un plato con un papel absorvente y le
@@ -841,7 +1129,8 @@
                             <p class="texto">Dulce hecho a base de membrillos. Típico en la zona de Puente Genil</p>
                             <p>
                                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button"
-                                    aria-expanded="false" aria-controls="collapseExample" style="padding-left: 0;" id="receta2">
+                                    aria-expanded="false" aria-controls="collapseExample" style="padding-left: 0;"
+                                    id="receta2">
                                     <i class="fas fa-book-open" style="padding-left: 0;"></i> RECETA
                                 </a>
                             </p>
@@ -897,7 +1186,8 @@
                                 Cabra.</p>
                             <p>
                                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
-                                    aria-expanded="false" aria-controls="collapseExample" style="padding-left: 0;" id="receta3">
+                                    aria-expanded="false" aria-controls="collapseExample" style="padding-left: 0;"
+                                    id="receta3">
                                     <i class="fas fa-book-open" style="padding-left: 0;"></i> RECETA
                                 </a>
                             </p>
@@ -964,7 +1254,8 @@
                 </div>
                 <div class="col-12 col-md-6 text-center">
                     <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 300px">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25332.252059610248!2d-4.455847447058417!3d37.471782008190054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d75d5364fab4f%3A0xceb0c587713bef15!2s14940+Cabra%2C+C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1551568716307"
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25332.252059610248!2d-4.455847447058417!3d37.471782008190054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d75d5364fab4f%3A0xceb0c587713bef15!2s14940+Cabra%2C+C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1551568716307"
                             width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
